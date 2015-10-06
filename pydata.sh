@@ -75,6 +75,7 @@ mkvirtualenv --python=/usr/local/bin/python3 py3-data
 workon py3-data
 
 # Install Python data modules
+pip install openpyxl
 pip install numpy
 pip install scipy
 pip install matplotlib
