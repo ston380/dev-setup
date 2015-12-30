@@ -7,7 +7,7 @@ dev-setup
 
 ## Motivation
 
-Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.  This repo aims to **simplify** the process with **easy-to-understand instructions** and **dotfiles/scripts** that **automate the setup** of:
+Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.  `dev-setup` aims to **simplify** the process with **easy-to-understand instructions** and **dotfiles/scripts** to **automate the setup** of the following:
 
 * **OS X updates and Xcode Command Line Tools**
 * **OS X defaults** geared towards developers
@@ -20,7 +20,13 @@ Setting up a new developer machine can be an **ad-hoc, manual, and time-consumin
 * **Javascript web development**: Node.js, JSHint, and Less
 * **Android development**: Java, Android SDK, Android Studio, IntelliJ IDEA
 
-You can also automate the process by [running a single setup script](#single-setup-script) to install and configure specified sections.
+### But...I Don't Need All These Tools!
+
+**`dev-setup` is geared to be more of an organized *reference* of various developer tools.**
+
+**You're *not* meant to install everything.**
+
+If you're interested in automation, `dev-setup` provides a customizable [setup script](#single-setup-script).  There's really no one-size-fits-all solution for developers so you're encouraged to make tweaks to suit your needs.
 
 [Credits](#credits): This repo builds on the awesome work from [Mathias Bynens](https://github.com/mathiasbynens) and [Nicolas Hery](https://github.com/nicolashery).
 
@@ -76,7 +82,7 @@ This repo takes a more **light-weight** approach to automation using a combinati
 * [Vagrant](#vagrant)
 * [Docker](#docker)
 * [Homebrew](#homebrew)
-* [Ruby and RVM](#ruby-and-rvm)
+* [Ruby and rbenv](#ruby-and-rbenv)
 * [Python](#python)
 * [Pip](#pip)
 * [Virtualenv](#virtualenv)
@@ -99,8 +105,10 @@ This repo takes a more **light-weight** approach to automation using a combinati
 
 * [Spark](#spark)
 * [MapReduce](#mapreduce)
+* [Awesome AWS](#awesome-aws-)
 * [AWS Account](#aws-account)
 * [AWS CLI](#aws-cli)
+* [SAWS](#saws)
 * [Boto](#boto)
 * [S3cmd](#s3cmd)
 * [S3DistCp](#s3distcp)
@@ -151,7 +159,9 @@ This repo takes a more **light-weight** approach to automation using a combinati
 
 ##### Run the .dots Script with Command Line Arguments
 
-Since you probably don't want to install every section, the `.dots` script supports command line arguments to run only specified sections.  Simply pass in the [scripts](#scripts) that you want to install.  Below are some examples.
+**Since you probably don't want to install every section**, the `.dots` script supports command line arguments to run only specified sections.  Simply pass in the [scripts](#scripts) that you want to install.  Below are some examples.
+
+**For more customization, you can [clone](#clone-the-repo) or [fork](https://github.com/donnemartin/dev-setup/fork) the repo and tweak the `.dots` script and its associated components to suit your needs.**
 
 Run all:
 
@@ -168,8 +178,6 @@ Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`, `pydata.sh`, `aws.sh`
 #### Running without Git
 
     $ curl -O https://raw.githubusercontent.com/donnemartin/dev-setup/master/.dots && ./.dots [Add ARGS Here]
-
-**For more customization, you can [clone](#clone-the-repo) or [fork](https://github.com/donnemartin/dev-setup/fork) the repo and tweak the `.dots` script and its associated components to suit your needs.**
 
 #### Scripts
 
@@ -747,94 +755,53 @@ To see what you have installed (with their version numbers):
 
     $ brew list --versions
 
-### Ruby and RVM
+### Ruby and rbenv
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/donnemartin/dev-setup-resources/master/res/ruby.png">
   <br/>
 </p>
 
-[Ruby](http://www.ruby-lang.org/) is already installed on Unix systems. But we don't want to mess around with that installation. More importantly, we want to be able to use the latest version of Ruby.
+[Ruby](http://www.ruby-lang.org/) is already installed on Unix systems, but we don't want to mess around with that installation. More importantly, we want to be able to use the latest version of Ruby.
 
 #### Installation
 
-When installing Ruby, best practice is to use [RVM](https://rvm.io/) (Ruby Version Manager) which allows you to manage multiple versions of Ruby on the same machine. Installing RVM, as well as the latest version of Ruby, is very easy. Just run:
+`brew.sh` provides [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build) which allow you to manage multiple versions of Ruby on the same machine.  `brew.sh` adds the following line to your `.extra` file to initialize `rbenv`:
 
-    $ curl -L https://get.rvm.io | bash -s stable --ruby
-
-When it is done, both RVM and a fresh version of Ruby 2.0 are installed. The following line was also automatically added to your `.bash_profile`:
-
-```bash
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 ```
-
-I prefer to move that line to the `.extra` file, keeping my `.bash_profile` clean. I suggest you do the same.
-
-After that, start a new terminal and run:
-
-    $ type rvm | head -1
-
-You should get the output `rvm is a function`.
+eval "$(rbenv init -)"
+```
 
 #### Usage
 
-The following command will show you which versions of Ruby you have installed:
+`rbenv` uses `ruby-build` to download, compile, and install new versions of Ruby. You can see all versions available to download and install:
 
-    $ rvm list
+```
+$ ruby-build --definitions
+```
 
-The one that was just installed, Ruby 2.0, should be set as default. When managing multiple versions, you switch between them with:
+To install a new version of Ruby:
 
-    $ rvm use system # Switch back to system install (1.8)
-    $ rvm use 2.0.0 --default # Switch to 2.0.0 and sets it as default
+```
+# list all available versions installed on the system:
+$ rbenv install -l
 
-Run the following to make sure the version you want is being used (in our case, the just-installed Ruby 1.9.3):
+# install a Ruby version:
+$ rbenv install 2.2.3
+```
 
-    $ which ruby
-    $ ruby --version
+To switch Ruby versions:
 
-You can install another version with:
+```
+# set a local application-specific Ruby version in the current directory
+$ rbenv local 1.9.3
 
-    $ rvm install 1.9.3
+# set the global version of Ruby to be used in all shells
+$ rbenv global 2.0.0
 
-To update RVM itself, use:
+```
 
-    $ rvm get stable
-
-[RubyGems](http://rubygems.org/), the Ruby package manager, was also installed:
-
-    $ which gem
-
-Update to its latest version with:
-
-    $ gem update --system
-
-To install a "gem" (Ruby package), run:
-
-    $ gem install <gemname>
-
-To install without generating the documentation for each gem (faster):
-
-    $ gem install <gemname> --no-document
-
-To see what gems you have installed:
-
-    $ gem list
-
-To check if any installed gems are outdated:
-
-    $ gem outdated
-
-To update all gems or a particular gem:
-
-    $ gem update [<gemname>]
-
-RubyGems keeps old versions of gems, so feel free to do come cleaning after updating:
-
-    $ gem cleanup
-
-I mainly use Ruby for the CSS pre-processor [Compass](http://compass-style.org/), which is built on top of [Sass](http://sass-lang.com/):
-
-    $ gem install compass --no-document
+`rbenv` by default will install Ruby versions into a directory of the same name under `~/.rbenv/versions`. Because your user owns this directory, you no longer need to use `sudo` to install gems.
 
 ### Python
 
@@ -1211,6 +1178,27 @@ runners:
 
 Refer to the following [mrjob IPython Notebook](https://github.com/donnemartin/data-science-ipython-notebooks#mapreduce-python).
 
+### Awesome AWS [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/donnemartin/data-science-ipython-notebooks/master/images/aws.png">
+</p>
+<br/>
+
+[Awesome AWS](https://github.com/donnemartin/awesome-aws) is a curated list of awesome AWS libraries, open source repos, guides, blogs, and other resources.  It's a great way to stay up-to-date with the various aws-backed and community-led efforts geared towards AWS.
+
+#### The Fiery Meter of AWSome
+
+'Hot' repos in Awesome AWS are visually tagged based on their popularity:
+
+* Repo with 0100+ Stars: :fire:
+* Repo with 0200+ Stars: :fire::fire:
+* Repo with 0500+ Stars: :fire::fire::fire:
+* Repo with 1000+ Stars: :fire::fire::fire::fire:
+* Repo with 2000+ Stars: :fire::fire::fire::fire::fire:
+
+*Repos not on `The Fiery Meter of AWSome` can still be awesome, see [A Note on Repo AWSomeness](https://github.com/donnemartin/awesome-aws/blob/master/CONTRIBUTING.md#a-note-on-repo-awsomeness).*
+
 ### AWS Account
 
 To start using AWS, you first need to sign up for an account.
@@ -1258,6 +1246,57 @@ aws_secret_access_key = YOURSECRETKEY
 #### Usage
 
 Refer to the following [AWS CLI IPython Notebook](https://github.com/donnemartin/data-science-ipython-notebooks#aws).
+
+### SAWS
+
+![](http://i.imgur.com/vzC5zmA.gif)
+
+Although the [AWS CLI](https://github.com/aws/aws-cli) is a great resource to manage your AWS-powered services, it's **tough to remember usage** of:
+
+* 50+ top-level commands
+* 1400+ subcommands
+* Countless command-specific options
+* Resources such as instance tags and buckets
+
+#### SAWS: A Supercharged AWS CLI
+
+`SAWS` aims to **supercharge** the AWS CLI with features focusing on:
+
+* **Improving ease-of-use**
+* **Increasing productivity**
+
+Under the hood, `SAWS` is **powered by the AWS CLI** and supports the **same commands** and **command structure**.
+
+`SAWS` and `AWS CLI` Usage:
+
+    aws <command> <subcommand> [parameters] [options]
+
+`SAWS` features:
+
+* Auto-completion of:
+    * Commands
+    * Subcommands
+    * Options
+* Auto-completion of resources:
+    * Bucket names
+    * Instance ids
+    * Instance tags
+    * [More coming soon!]((#todo-add-more-resources))
+* Customizable shortcuts
+* Fuzzy completion of resources and shortcuts
+* Syntax and output highlighting
+* Execution of shell commands
+* Command history
+* Contextual help
+* Toolbar options
+
+`SAWS` is available for Mac, Linux, Unix, and [Windows](#windows-support).
+
+![](http://i.imgur.com/Eo12q9T.png)
+
+#### Installation and Usage.
+
+Refer to the [repo link](https://github.com/donnemartin/saws).
 
 ### Boto
 
