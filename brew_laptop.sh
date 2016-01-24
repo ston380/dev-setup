@@ -157,8 +157,7 @@ brew cask install --appdir="/Applications" sublime-text3
 brew cask install --appdir="/Applications" heroku-toolbelt
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" pycharm
-brew cask install --appdir="/Applications" mysql-utilities
-brew cask install --appdir="/Applications" mysql-workbench
+
 brew cask install --appdir="/Applications" Caskroom/cask/rstudio
 
 # Misc casks

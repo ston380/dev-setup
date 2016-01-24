@@ -41,10 +41,10 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 #    "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Set highlight color to green
-#defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
 # Set sidebar icon size to medium
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+#defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Always show scrollbars
 #defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -148,7 +148,7 @@ sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-#sudo pmset -a sms 0
+sudo pmset -a sms 0
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
