@@ -56,6 +56,11 @@ brew install narwhal
 brew install python
 brew install python3
 
+# Install R
+brew tap homebrew/science
+brew install r
+brew install libsvg curl libxml2 gdal geos boost
+
 # Install ruby-build and rbenv
 brew install ruby-build
 brew install rbenv
@@ -154,6 +159,7 @@ brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" pycharm
 brew cask install --appdir="/Applications" mysql-utilities
 brew cask install --appdir="/Applications" mysql-workbench
+brew cask install --appdir="/Applications" Caskroom/cask/rstudio
 
 # Misc casks
 #brew cask install --appdir="/Applications" google-chrome
@@ -200,6 +206,9 @@ brew cask install --appdir="/Applications" slack
 
 #Remove comment to install LaTeX distribution MacTeX
 #brew cask install --appdir="/Applications" mactex
+
+# Reconfigure Java for R...?
+R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
 
 # Link cask apps to Alfred
 brew cask alfred link
