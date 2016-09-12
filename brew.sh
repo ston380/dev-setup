@@ -57,10 +57,10 @@ brew install python
 brew install python3
 
 # Install ruby-build and rbenv
-brew install ruby-build
-brew install rbenv
-LINE='eval "$(rbenv init -)"'
-grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+# brew install ruby-build
+# brew install rbenv
+# LINE='eval "$(rbenv init -)"'
+# grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
@@ -75,7 +75,7 @@ brew install sfnt2woff
 brew install sfnt2woff-zopfli
 brew install woff2
 
-# Install some CTF tools; see https://github.com/ctfs/write-ups.
+'''# Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng
 brew install bfg
 brew install binutils
@@ -99,7 +99,7 @@ brew install tcpreplay
 brew install tcptrace
 brew install ucspi-tcp # `tcpserver` etc.
 brew install xpdf
-brew install xz
+brew install xz'''
 
 # Install other useful binaries.
 brew install ack
@@ -132,8 +132,8 @@ brew link libxml2 --force
 brew link libxslt --force
 
 # Install Heroku
-brew install heroku-toolbelt
-heroku update
+# brew install heroku-toolbelt
+# heroku update
 
 # Install Cask
 brew install caskroom/cask/brew-cask
@@ -146,7 +146,7 @@ brew cask install --appdir="~/Applications" xquartz
 
 # Development tool casks
 brew cask install --appdir="/Applications" sublime-text3
-brew cask install --appdir="/Applications" atom
+# brew cask install --appdir="/Applications" atom
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" vagrant
 brew cask install --appdir="/Applications" heroku-toolbelt
@@ -158,34 +158,33 @@ brew cask install --appdir="/Applications" pycharm
 brew cask install --appdir="/Applications" firefox
 brew cask install --appdir="/Applications" skype
 brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" dropbox
+# brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" flux
 brew cask install --appdir="/Applications" notational-velocity
 brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" atext
-brew cask install --appdir="/Applications" sparrow
+# brew cask install --appdir="/Applications" sparrow
 brew cask install --appdir="/Applications" audacity
 brew cask install --appdir="/Applications" skype
 brew cask install --appdir="/Applications" vlc
 brew cask install --appdir="/Applications" handbrake
-brew cask install --appdir="/Applications" plex-media-server
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" dropbox
+# brew cask install --appdir="/Applications" plex-media-server
+# brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" skitch
 brew cask install --appdir="/Applications" the-unarchiver
 brew cask install --appdir="/Applications" mindjet-mindmanager
 brew cask install --appdir="/Applications" github-desktop
 brew cask install --appdir="/Applications" sopcast
 brew cask install --appdir="/Applications" pgadmin3
-brew cask install --appdir="/Applications" flickr-uploader
+# brew cask install --appdir="/Applications" flickr-uploader
 brew cask install --appdir="/Applications" google-photos-backup
 brew cask install --appdir="/Applications" google-earth
 brew cask install --appdir="/Applications" google-drive
 brew cask install --appdir="/Applications" sequel-pro
 brew cask install --appdir="/Applications" diskmaker-x
 brew cask install --appdir="/Applications" onyx
-brew cask install --appdir="/Applications" logitech-harmony
+# brew cask install --appdir="/Applications" logitech-harmony
 brew cask install --appdir="/Applications" mobile-mouse-server
 brew cask install --appdir="/Applications" caffeine
 brew cask install --appdir="/Applications" calibre

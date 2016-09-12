@@ -138,7 +138,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 sudo tmutil disablelocal
 
 # Disable hibernation (speeds up entering sleep mode)
-# sudo pmset -a hibernatemode 0
+sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 sudo rm -f /private/var/vm/sleepimage
@@ -189,7 +189,7 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 
 # Set language and text formats
 #defaults write NSGlobalDomain AppleLanguages -array "en"
-#defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+#defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
 #defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 #defaults write NSGlobalDomain AppleMetricUnits -bool false
 

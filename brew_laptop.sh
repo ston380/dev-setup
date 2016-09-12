@@ -49,8 +49,8 @@ brew install wget --with-iri
 # Install RingoJS and Narwhal.
 # Note that the order in which these are installed is important;
 # see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
+# brew install ringojs
+# brew install narwhal
 
 # Install Python
 brew install python
@@ -62,10 +62,10 @@ brew install r
 brew install libsvg curl libxml2 gdal geos boost
 
 # Install ruby-build and rbenv
-brew install ruby-build
-brew install rbenv
-LINE='eval "$(rbenv init -)"'
-grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
+# brew install ruby-build
+# brew install rbenv
+# LINE='eval "$(rbenv init -)"'
+# grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
@@ -75,41 +75,41 @@ brew install homebrew/dupes/screen
 brew install homebrew/php/php55 --with-gmp
 
 # Install font tools.
-brew tap bramstein/webfonttools
-brew install sfnt2woff
-brew install sfnt2woff-zopfli
-brew install woff2
+# brew tap bramstein/webfonttools
+# brew install sfnt2woff
+# brew install sfnt2woff-zopfli
+# brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install aircrack-ng
-brew install bfg
-brew install binutils
-brew install binwalk
-brew install cifer
-brew install dex2jar
-brew install dns2tcp
-brew install fcrackzip
-brew install foremost
-brew install hashpump
-brew install hydra
-brew install john
-brew install knock
-brew install netpbm
-brew install nmap
-brew install pngcheck
-brew install socat
-brew install sqlmap
-brew install tcpflow
-brew install tcpreplay
-brew install tcptrace
-brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
-brew install xz
+# brew install aircrack-ng
+# brew install bfg
+# brew install binutils
+# brew install binwalk
+# brew install cifer
+# brew install dex2jar
+# brew install dns2tcp
+# brew install fcrackzip
+# brew install foremost
+# brew install hashpump
+# brew install hydra
+# brew install john
+# brew install knock
+# brew install netpbm
+# brew install nmap
+# brew install pngcheck
+# brew install socat
+# brew install sqlmap
+# brew install tcpflow
+# brew install tcpreplay
+# brew install tcptrace
+# brew install ucspi-tcp # `tcpserver` etc.
+# brew install xpdf
+# brew install xz
 
 # Install other useful binaries.
-brew install ack
-brew install dark-mode
-#brew install exiv2
+# brew install ack
+# brew install dark-mode
+# brew install exiv2
 brew install git
 brew install git-lfs
 brew install git-flow
@@ -122,7 +122,7 @@ brew install pigz
 brew install pv
 brew install rename
 brew install rhino
-brew install speedtest_cli
+# brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
 brew install webkit2png
@@ -137,8 +137,8 @@ brew link libxml2 --force
 brew link libxslt --force
 
 # Install Heroku
-brew install heroku-toolbelt
-heroku update
+# brew install heroku-toolbelt
+# heroku update
 
 # Install Cask
 brew install caskroom/cask/brew-cask
@@ -162,23 +162,22 @@ brew cask install --appdir="/Applications" Caskroom/cask/rstudio
 
 # Misc casks
 #brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" firefox
+# brew cask install --appdir="/Applications" firefox
 brew cask install --appdir="/Applications" skype
 brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" dropbox
-brew cask install --appdir="/Applications" evernote
+# brew cask install --appdir="/Applications" dropbox
+# brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" flux
+brew cask install --appdir="/Applications" transmission
 #brew cask install --appdir="/Applications" notational-velocity
-brew cask install --appdir="/Applications" evernote
-brew cask install --appdir="/Applications" atext
-brew cask install --appdir="/Applications" sparrow
-#brew cask install --appdir="/Applications" audacity
+# brew cask install --appdir="/Applications" atext
+# brew cask install --appdir="/Applications" sparrow
+# brew cask install --appdir="/Applications" audacity
 brew cask install --appdir="/Applications" skype
 brew cask install --appdir="/Applications" vlc
 #brew cask install --appdir="/Applications" handbrake
 #brew cask install --appdir="/Applications" plex-media-server
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" dropbox
+# brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" skitch
 brew cask install --appdir="/Applications" the-unarchiver
 brew cask install --appdir="/Applications" mindjet-mindmanager
